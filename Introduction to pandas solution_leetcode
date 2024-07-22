@@ -1,0 +1,61 @@
+1.def createDataframe(student_data: List[List[int]]) -> pd.DataFrame:
+    return pd.DataFrame(student_data,columns=['student_id','age'])
+
+2.def getDataframeSize(players: pd.DataFrame) -> List[int]:
+    return list(players.shape)
+
+3.def selectFirstRows(employees: pd.DataFrame) -> pd.DataFrame:
+    return employees.head(3)
+
+4.def selectData(students: pd.DataFrame) -> pd.DataFrame:
+    return pd.DataFrame(students[students['student_id']==101],columns=['name','age'])
+
+5.def createBonusColumn(employees: pd.DataFrame) -> pd.DataFrame:
+    employees['bonus']=employees['salary']*2
+    return employees
+
+6.def dropDuplicateEmails(customers: pd.DataFrame) -> pd.DataFrame:
+    return customers.drop_duplicates(subset=['email'],keep='first')
+
+7.def dropMissingData(students: pd.DataFrame) -> pd.DataFrame:
+    students.dropna(subset='name',inplace=True)
+    return students
+
+8.def modifySalaryColumn(employees: pd.DataFrame) -> pd.DataFrame:
+    employees['salary']=employees['salary']*2
+    return employees
+9.def renameColumns(students: pd.DataFrame) -> pd.DataFrame:
+    students.rename(columns={'id':'student_id','first':'first_name','last':'last_name','age':'age_in_years'},inplace=True)
+    return students
+
+10.def changeDatatype(students: pd.DataFrame) -> pd.DataFrame:
+    students['grade']=students['grade'].astype('int')
+    return students
+(or)
+return students.astype({'grade':'int'})
+
+11.def fillMissingValues(products: pd.DataFrame) -> pd.DataFrame:
+    products['quantity'].fillna(0,inplace=True)
+    return products
+
+12.def concatenateTables(df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
+    return pd.concat([df1,df2])
+
+13.def pivotTable(weather: pd.DataFrame) -> pd.DataFrame:
+    return weather.pivot(index='month',columns='city',values='temperature')
+Or 
+ return pd.pivot_table(weather,index='month',columns='city',values='temperature')
+
+#to convert pivot table to normal
+df = pivot_name.reset_index()
+
+14.def meltTable(report: pd.DataFrame) -> pd.DataFrame:
+    return report.melt(id_vars='product',var_name='quarter',value_name='sales')
+   
+
+15.def findHeavyAnimals(animals: pd.DataFrame) -> pd.DataFrame:
+    df=pd.DataFrame(animals[animals['weight']>100],columns=['name','weight'])
+    df2= df.sort_values('weight',ascending=False)
+    return pd.DataFrame(df2.name)
+
+
